@@ -1,23 +1,25 @@
-import { useEffect } from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React, { useEffect } from "react";
 import { StyleSheet } from "react-native";
 
-import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
+import { TabOneStackScreenProps } from "../types";
 
-export default function TabTwoScreen() {
-  useEffect(() => console.log("[render] TabTwo"));
+interface Props extends TabOneStackScreenProps<"ScreenTwo"> {}
+
+export const ScreenTwoScreen = ({ navigation }: Props) => {
+  useEffect(() => console.log(`[render] ScreenTwo`));
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
+      <Text style={styles.title}>Screen Two</Text>
       <View
         style={styles.separator}
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -35,3 +37,5 @@ const styles = StyleSheet.create({
     width: "80%",
   },
 });
+
+export default ScreenTwoScreen;
